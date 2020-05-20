@@ -1,0 +1,12 @@
+package frsf.isi.died.guia08.problema01;
+
+public class EmpleadoException extends Exception {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public EmpleadoException(String errorString) {
+		super(errorString);
+	}
+}
