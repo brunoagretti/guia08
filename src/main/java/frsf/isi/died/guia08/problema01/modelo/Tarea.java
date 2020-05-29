@@ -53,6 +53,17 @@ public class Tarea {
 			throw new FechaTareaException("La tarea no tiene fecha de finalizacion inicializada");
 		}
 	}
+	
+	public boolean finalizo() {
+		
+		if(fechaFin.isPresent()) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	
 	public static Tarea getTarea(int idTarea) throws TareaException { //busca en la clase las instancias de tarea segun id
 		return tareas.stream()
 			  .filter(t -> t.getId()==idTarea)
@@ -77,6 +88,12 @@ public class Tarea {
 		}
 		return empleadoAsignado;
 	}
+	
+	public String asCsv() throws TareaException {
+	return this.id+ ";\""+ this.descripcion+"\";"+this.duracionEstimada+"\";"+
+		   this.empleadoAsignado.orElseThrow(() -> new TareaException("No tiene empleado asignado")).getCuil();
+	}
+
 
 	private Integer id;
 	private String descripcion;
@@ -85,7 +102,7 @@ public class Tarea {
 	private Optional<LocalDateTime> fechaInicio;
 	private Optional<LocalDateTime> fechaFin;
 	private Boolean facturada;
-	private static ArrayList<Tarea> tareas;
+	public static ArrayList<Tarea> tareas;
 	
 	public void asignarEmpleado(Empleado e) throws TareaException {
 		

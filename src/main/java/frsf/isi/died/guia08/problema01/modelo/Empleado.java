@@ -162,6 +162,12 @@ public class Empleado {
 	public String toString() {
 		return this.nombre + " Cuil: " + this.cuil;
 	}
+//	
+//	public String asCsv() {
+//	return this.cuil+ ";\""+ this.nombre+"\";"+this.costoHora;
+//	}
+
+	
 	
 	
 	public Boolean asignarTarea(Tarea t) throws TareaException {
